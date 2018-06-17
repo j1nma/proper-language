@@ -51,3 +51,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Lex and Yacc 
+*lex.yy.c
+*y.tab.c
+*y.tab.h
