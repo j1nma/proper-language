@@ -1,0 +1,12 @@
+Dear Mr. Fibonacci,
+
+	Please print the following fibonacci with 5.
+
+	Say fibonacci is as defined:
+if the recipient is equal to nil return 1.
+Otherwise, return fibonacci with the recipient decreased by 1.
+Thank you.
+
+Sincerely,
+
+Coder
