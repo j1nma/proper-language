@@ -9,30 +9,51 @@ Group ALT
 
 ---
 
-## Compiling compiler
-
-
-```
-
-```
-
-## Compiling
-
-```
-
-```
-
-
 ## Scripts
 
 ```
+./properize.sh your_proper_program.proper
+```
 
+Or if prefered, without re-compiling proper_compiler already at *compiler* directory, generate compiled and executable:
+
+```
+./proper_compiled_and_bin.sh your_proper_program.proper
+```
+
+
+## Compiling compiler
+
+Obtain *proper_compiler* inside *compiler* directory:
+
+
+```
+make all
+```
+
+Clean files with:
+
+
+```
+make clean
+```
+
+## Compiling your program
+
+
+```
+./compiler/proper_compiler < your_proper_program.proper > your_compiled_proper.c
+```
+
+Obtain executable from *your_compiled_proper.c* with:
+```
+gcc compiled.c runtime/*.c -o proper.out
 ```
 
 
 ## Running
 
 ```
-
+./proper.out
 ```
 
