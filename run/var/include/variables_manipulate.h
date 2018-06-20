@@ -3,9 +3,11 @@
 
 #include "variables.h"
 
-variable variableAdd(variable v1, variable v2);
-variable variableSub(variable v1, variable v2);
-variable variableProd(variable v1, variable v2);
-variable variableDiv(variable v1, variable v2);
+variable variablesSum(variable v1, variable v2);
+variable variablesSub(variable v1, variable v2);
+variable variablesProd(variable v1, variable v2);
+variable variablesDiv(variable v1, variable v2);
+
+variable variableNegative(variable v);
 
 #endif
