@@ -105,7 +105,7 @@ char *getExpression(expressionNode *expression)
 void producePrint(expressionNode *en)
 {
     char *e = getExpression(en);
-    printf("printVariable(%s);\n", e);
+    printf("\tprintVariable(%s);\n", e);
     free(e);
 }
 
@@ -113,7 +113,7 @@ void producePrint(expressionNode *en)
 void produceAssign(assignmentNode *an)
 {
     char *e = getExpression(an->expression);
-    printf("assignVariable(%d, %s);\n", an->variableId, e);
+    printf("\tassignVariable(%d, %s);\n", an->variableId, e);
     free(e);
 }
 
@@ -289,6 +289,14 @@ void getCode(statementNode *root)
 
         case EXIT_CALL:
             produceExit();
+            break;
+
+        case START_POINT:
+            printf("int main(void) { \n");
+            break;
+
+        case END_POINT:
+            printf("}\n");
             break;
 
         default:

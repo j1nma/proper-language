@@ -10,7 +10,9 @@ typedef enum
     ASSIGNMENT,
     IF_THEN_ELSE,
     WHILE_BLOCK,
-    EXIT_CALL
+    EXIT_CALL,
+    START_POINT,
+    END_POINT
 } statementType;
 
 typedef enum

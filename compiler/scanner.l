@@ -14,7 +14,9 @@ digit [0-9]
 %%
 
 [\t \n]
-show           		return PRINT;
+"Dear Sir or Madam," {return MAIN_START;}
+"Sincerely,\nMr. Proper"		{return MAIN_END;}
+"Please show"    	{return PRINT;}
 
 [\(\)]				{return *yytext;}
 

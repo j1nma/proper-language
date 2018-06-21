@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include "include/ast.h"
 
+int yydebug=1;
+
 #define MAX_IDENTIFIERS 1000
 
 
@@ -63,6 +65,9 @@ int getOrAddId(char * strId) {
 %token <floatval> FLT;
 %token <stringval> STR;
 %token <stringval> IDENTIFIER;
+
+%token MAIN_START;
+%token MAIN_END
 
 %token PRINT;
 %token READ;
@@ -167,7 +172,18 @@ block: print {
 			$$ = malloc(sizeof(*$$));
 			$$->type = EXIT_CALL;
 		}
+		| mainstart {
+			$$ = malloc(sizeof(*$$));
+			$$->type = START_POINT;
+		}
+		| mainend {
+			$$ = malloc(sizeof(*$$));
+			$$->type = END_POINT;
+		}
 		;
+
+mainstart: MAIN_START;
+mainend: MAIN_END;
 
 exit: EXIT;
 assign: SAY IDENTIFIER IS expression {
@@ -330,18 +346,11 @@ bool_operator: EQ { $$ = BOOLEAN_EQ;  }
 int main()
 {
 	printf("#include <stdlib.h>\n");
-
 	printf("#include \"run/var/include/variables.h\"\n");
-
 	printf("#include \"run/var/include/variables_compare.h\"\n");
-
 	printf("#include \"run/var/include/variables_manipulate.h\"\n\n");
 
-    printf("int main(void) { \n");
-
     yyparse();
-
-    printf("}\n");
 
     return 0;
 }
