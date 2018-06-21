@@ -9,7 +9,8 @@ typedef enum
     PRINT_CALL,
     ASSIGNMENT,
     IF_THEN_ELSE,
-    WHILE
+    WHILE_BLOCK,
+    EXIT_CALL
 } statementType;
 
 typedef enum
@@ -18,6 +19,8 @@ typedef enum
     INTEGER,
     FLOAT,
     STRING,
+
+    NEGATIVE,
 
     BINARY_ADD,
     BINARY_SUB,
@@ -68,15 +71,6 @@ typedef struct expressionNode
 } expressionNode;
 
 /*
-	Linked list of expressions.
-*/
-typedef struct expressionList
-{
-    expressionNode *expression;
-    struct expressionList *next;
-} expressionList;
-
-/*
 	Node with assignment statement information (expression and variable id
     involved).
 */
@@ -110,7 +104,7 @@ typedef struct ifElseIfNode
 } ifElseIfNode;
 
 /*
-    Node with WHILE statement information.
+    Node with WHILE_BLOCK statement information.
 */
 typedef struct whileNode
 {
@@ -118,8 +112,31 @@ typedef struct whileNode
     struct statementNode *block;
 } whileNode;
 
+/*
+	Helper node when reducing statement rules
+*/
+typedef struct blockNode
+{
+    void *node;
+    statementType type;
+} blockNode;
+
 char *getBinaryExpression(expressionNode *expression, char *binaryOperation);
 char *getExpression(expressionNode *expression);
-void getCode(struct statementNode *root);
+
+void producePrint(expressionNode *en);
+void produceAssign(assignmentNode *an);
+void produceEquals(boolNode *bn);
+void produceNotEquals(boolNode *bn);
+void produceCompareBoolean(boolNode *bn, char *booleanOperator);
+void produceBinaryBoolean(boolNode *node, char *booleanOperator);
+
+void produceBoolean(boolNode *bn);
+void produceIf(ifElseIfNode *in);
+void produceWhile(whileNode *wn);
+
+void produceExit();
+
+void getCode(statementNode *root);
 
 #endif

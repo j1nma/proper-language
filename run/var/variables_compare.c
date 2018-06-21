@@ -15,11 +15,11 @@ int compare(variable v1, variable v2)
     switch (v1.type)
     {
     case TYPE_INT:
-        return compare_to_int(v1, v2);
+        return compareVariableWithInt(v1, v2);
     case TYPE_FLOAT:
-        return compare_to_float(v1, v2);
+        return compareVariableWithFloat(v1, v2);
     case TYPE_STRING:
-        return compare_to_str(v1, v2);
+        return compareVariableWithString(v1, v2);
     default:
         printf("Error: non-matching variable types.\n");
         exit(0);
@@ -34,13 +34,16 @@ static int compareVariableTypes(variableType t1, variableType t2)
 
 static int compareVariableWithInt(variable v, variable intVariable)
 {
+
+    float floatDiff = 0;
+
     switch (v.type)
     {
     case TYPE_INT:
         return v.value.intValue - intVariable.value.intValue;
 
     case TYPE_FLOAT:
-        float floatDiff = v.value.floatValue - intVariable.value.intValue;
+        floatDiff = v.value.floatValue - intVariable.value.intValue;
         return fabs(floatDiff) < FLOAT_ERROR ? 0 : floatDiff;
 
     default:
@@ -51,13 +54,15 @@ static int compareVariableWithInt(variable v, variable intVariable)
 
 static int compareVariableWithFloat(variable v, variable floatVariable)
 {
+    float floatDiff = 0;
+
     switch (v.type)
     {
     case TYPE_INT:
         return -compareVariableWithInt(floatVariable, v);
 
     case TYPE_FLOAT:
-        float floatDiff = v.value.floatValue - floatVariable.value.floatValue;
+        floatDiff = v.value.floatValue - floatVariable.value.floatValue;
         return fabs(floatDiff) < FLOAT_ERROR ? 0 : floatDiff;
 
     default:
