@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define MAX_VARIABLES 100
+#define MAX_VARIABLES 1000
 
 typedef enum
 {
@@ -33,6 +33,8 @@ variable createFloatVariable(float value);
 variable createStringVariable(char *value);
 
 variable assignVariable(int id, variable assigned);
+
+void printVariable(variable v);
 
 void freeVariable(variable *v);
 

@@ -12,7 +12,6 @@ variable *variableTable[MAX_VARIABLES] = {0};
 /* symbol/variable table where objects' names of program are allocated */
 char *variableNameTable[MAX_VARIABLES] = {0};
 
-
 void addVariableNameToId(int id, char *name)
 {
     variableNameTable[id] = name;
@@ -91,10 +90,28 @@ variable assignVariable(int id, variable v)
         break;
     }
 
-    free_variable_resources(variableTable[id]);
+    freeVariable(variableTable[id]);
     variableTable[id] = res;
 
     return *res;
+}
+
+void printVariable(variable v)
+{
+    switch (v.type)
+    {
+    case TYPE_INT:
+        printf("%d", v.value.intValue);
+        break;
+    case TYPE_FLOAT:
+        printf("%f", v.value.floatValue);
+        break;
+    case TYPE_STRING:
+        printf("%s", v.value.stringValue);
+        break;
+    }
+
+    printf("\n");
 }
 
 void freeVariable(variable *v)
@@ -106,6 +123,9 @@ void freeVariable(variable *v)
     {
     case TYPE_STRING:
         free(v->value.stringValue);
+        break;
+    default:
+        /* nothing to be freed for TYPE_INT and TYPE_INT */
         break;
     }
 }
