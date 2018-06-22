@@ -13,7 +13,7 @@ digit [0-9]
 
 %%
 
-[\t \n]
+[\t \n]	;
 "Dear Sir or Madam," {return MAIN_START;}
 "Sincerely,\nMr. Proper"		{return MAIN_END;}
 "Please show"    	{return PRINT;}
@@ -22,13 +22,21 @@ digit [0-9]
 
 {digit}+   			{
 						yylval.intval = atoi(yytext);
-						return INTEGER;
+						return INT;
 					}
 
 {digit}+\.{digit}+  { 	yylval.floatval = atof(yytext);
-						return FLOAT;
+						return FLT;
 						}
 
+"."					{return END_LINE;}
+
+{alpha}({alpha}|{digit})*  {
+								yylval.stringval = malloc(strlen(yytext)+1);
+								strcpy(yylval.stringval, yytext);
+								return IDENTIFIER;
+							}
+							
 \"[^\"]*\"			{
 					int len = strlen(yytext);
 					char * str = malloc(len-1);
@@ -38,12 +46,6 @@ digit [0-9]
 					return STR;
 					}
 
-{alpha}({alpha}|{digit})*  {
-								yylval.stringval = malloc(strlen(yytext)+1);
-								strcpy(yylval.stringval, yytext);
-								return IDENTIFIER;
-							}
-
-.               {return yytext[0];}
+	.               {return yytext[0];}
 
 %%

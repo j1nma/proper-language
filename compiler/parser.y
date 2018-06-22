@@ -67,7 +67,9 @@ int getOrAddId(char * strId) {
 %token <stringval> IDENTIFIER;
 
 %token MAIN_START;
-%token MAIN_END
+%token MAIN_END;
+
+%token END_LINE;
 
 %token PRINT;
 %token READ;
@@ -252,7 +254,7 @@ expression: IDENTIFIER {
 		}
 		;
 
-print: PRINT expression {
+print: PRINT expression END_LINE {
 			$$ = $2;
 		}
 		;
@@ -350,7 +352,7 @@ int main()
 	printf("#include \"run/var/include/variables_compare.h\"\n");
 	printf("#include \"run/var/include/variables_manipulate.h\"\n\n");
 
-    yyparse();
+    yyparse(); 
 
     return 0;
 }

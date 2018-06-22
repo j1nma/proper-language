@@ -31,7 +31,7 @@ char *getExpression(expressionNode *expression)
     {
     case VARIABLE:
     {
-        res = malloc(VARIABLE_SIZE);
+        res = malloc(VARIABLE_SIZE + 25);
         sprintf(res, "getVariableFromId(%d)", *(int *)expression->left);
         free(expression->left);
         break;
@@ -39,7 +39,7 @@ char *getExpression(expressionNode *expression)
 
     case INTEGER:
     {
-        res = malloc(NUMBER_SIZE);
+        res = malloc(NUMBER_SIZE + 25);
         sprintf(res, "createIntVariable(%d)", *((int *)expression->left));
         free(expression->left);
         break;
@@ -47,7 +47,7 @@ char *getExpression(expressionNode *expression)
 
     case FLOAT:
     {
-        res = malloc(NUMBER_SIZE);
+        res = malloc(NUMBER_SIZE + 25);
         sprintf(res, "createFloatVariable(%.5f)", *((float *)expression->left));
         free(expression->left);
         break;
@@ -56,7 +56,7 @@ char *getExpression(expressionNode *expression)
     case STRING:
     {
         char *str = (char *)expression->left;
-        res = malloc(STRING_SIZE + strlen(str));
+        res = malloc(STRING_SIZE + 25 + strlen(str));
         sprintf(res, "createStringVariable(\"%s\")", str);
         free(expression->left);
         break;
@@ -65,7 +65,7 @@ char *getExpression(expressionNode *expression)
     case NEGATIVE:
     {
         char *e = getExpression((expressionNode *)expression->left);
-        res = malloc(strlen(e) + STRING_SIZE);
+        res = malloc(strlen(e) + STRING_SIZE + 25);
         sprintf(res, "variableNegative(%s)", e);
 
         free(e);
