@@ -67,7 +67,7 @@ int getOrAddId(char * strId) {
 %token <stringval> IDENTIFIER;
 
 %token MAIN_START;
-%token MAIN_END
+%token MAIN_END;
 
 %token PRINT;
 %token READ;

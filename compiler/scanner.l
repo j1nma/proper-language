@@ -22,11 +22,11 @@ digit [0-9]
 
 {digit}+   			{
 						yylval.intval = atoi(yytext);
-						return INTEGER;
+						return INT;
 					}
 
 {digit}+\.{digit}+  { 	yylval.floatval = atof(yytext);
-						return FLOAT;
+						return FLT;
 						}
 
 \"[^\"]*\"			{

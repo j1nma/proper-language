@@ -1,4 +1,11 @@
 cd compiler
-make all
-cd ..
-./proper_compiled_and_bin.sh $1
+if [ $1 = "-debug" ]
+then
+	make debug
+	cd ..
+	./proper_compiled_and_bin.sh $2
+else
+	make all
+	cd ..
+	./proper_compiled_and_bin.sh $1
+fi
