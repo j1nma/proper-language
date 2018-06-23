@@ -24,7 +24,7 @@ is    					return IS;
 If						return IF;
 Suppose\ that			return IF;
 
-Otherwise\ if  				return ELSEIF;
+Otherwise\ if  			return ELSEIF;
 
 Otherwise				return ELSE;
 Or\ else				return ELSE;

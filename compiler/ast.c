@@ -260,7 +260,7 @@ void produceWhile(whileNode *wn)
 /* Produce read node */
 void produceRead(readNode *rn)
 {
-    printf("readVariable(%d, %d);\n", rn->type, rn->variableId);
+    printf("\treadVariable(%d, %d);\n", rn->type, rn->variableId);
 }
 
 /* Produce exit call */

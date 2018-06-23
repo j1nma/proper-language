@@ -111,7 +111,6 @@ void printVariable(variable v)
         break;
     }
 
-    printf("\n");
 }
 
 void readVariable(variableType type, int id)
