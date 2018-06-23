@@ -18,7 +18,7 @@ Dear\ Sir\ or\ Madam,	return MAIN_START;
 Sincerely,\nMr.\ Proper return MAIN_END;
 Please\ show   			return PRINT;
 
-Say    					return SAY;
+Say|say    				return SAY;
 is    					return IS;
 
 If						return IF;
@@ -50,6 +50,9 @@ is\ less\ than\ or\ equals\ to	return LE;
 
 is\ greater\ than		return GT;
 is\ greater\ than\ or\ equals\ to 	return GE;
+
+While					return WHILE;
+Until					return UNTIL;
 
 [\(\)]				{return *yytext;}
 

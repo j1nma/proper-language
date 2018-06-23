@@ -187,7 +187,7 @@ mainstart: MAIN_START {
 			;
 
 mainend: MAIN_END {
-			printf("} \n");
+			printf("\n} \n");
 		}
 		;
 

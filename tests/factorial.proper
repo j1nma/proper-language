@@ -1,0 +1,15 @@
+Dear Sir or Madam,
+
+    Say fact is 6.
+
+    Say res is fact.
+
+    While 'fact is greater than 1' then
+        say res is res * (fact - 1).
+        say fact is (fact - 1).
+    and repeat.
+
+    Please show res.
+
+Sincerely,
+Mr. Proper

@@ -217,7 +217,7 @@ void produceBoolean(boolNode *bn)
 /* Produce ifElseIf node */
 void produceIf(ifElseIfNode *in)
 {
-    printf("\n\nif(");
+    printf("\n\tif(");
 
     produceBoolean(in->condition);
 
@@ -225,13 +225,13 @@ void produceIf(ifElseIfNode *in)
 
     getCode(in->block);
 
-    printf("}\n");
+    printf("\t}\n");
 
     while (in->elseif != NULL)
     {
         in = in->elseif;
 
-        printf("else if(");
+        printf("\telse if(");
 
         produceBoolean(in->condition);
 
@@ -239,14 +239,14 @@ void produceIf(ifElseIfNode *in)
 
         getCode(in->block);
 
-        printf("} ");
+        printf("\t} ");
     }
 }
 
 /* Produce while node */
 void produceWhile(whileNode *wn)
 {
-    printf("\n\nwhile(");
+    printf("\n\twhile(");
 
     produceBoolean(wn->condition);
 
@@ -254,7 +254,7 @@ void produceWhile(whileNode *wn)
 
     getCode(wn->block);
 
-    printf("}\n\n");
+    printf("\t}\n\n");
 }
 
 /* Produce exit call */
