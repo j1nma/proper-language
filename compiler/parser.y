@@ -54,6 +54,8 @@ int getOrAddId(char * strId) {
 
 	boolNode * boolnode;
 
+	readNode* readnode;
+
   	statementNode * statementnode;
 
 	blockNode * block;
@@ -75,11 +77,6 @@ int getOrAddId(char * strId) {
 
 %token SAY;
 %token IS;
-
-/* READ a NUMBER or TEXT */
-%token READ;
-%token NUMBER;
-%token TEXT;
 
 %token DELIM;
 
@@ -104,6 +101,12 @@ int getOrAddId(char * strId) {
 %token GE;
 %token GT;
 
+/* READ a NUMBER or TEXT */
+%token READ;
+%token NUMBER;
+%token TEXT;
+%token INTO;
+
 %token EXIT;
 
 /* specify the associativity of an operator */
@@ -127,6 +130,8 @@ int getOrAddId(char * strId) {
 
 %type <statementnode> program;
 %type <block> block;
+
+%type <readnode> read_into;
 
 %start entry 
 
@@ -175,6 +180,11 @@ block:
 			$$->type = WHILE_BLOCK;
 			$$->node = $1;
 		}
+		| read_into {
+	 		$$ = malloc(sizeof(*$$));
+	 		$$->type = READ_INTO;
+	 		$$->node = $1;
+	 	}
 		| exit {
 			$$ = malloc(sizeof(*$$));
 			$$->type = EXIT_CALL;
@@ -344,6 +354,22 @@ bool_operator: EQ { $$ = BOOLEAN_EQ;  }
 			| GE { $$ = BOOLEAN_GE;  }
 			| GT { $$ = BOOLEAN_GT;  }
 			;
+
+read_into : READ NUMBER INTO IDENTIFIER END_LINE {
+			$$ = malloc(sizeof(*$$));
+
+			$$->type = 0; //TYPE_INT
+
+			$$->variableId = getOrAddId($4);
+			}
+		| READ TEXT INTO IDENTIFIER END_LINE {
+			$$ = malloc(sizeof(*$$));
+
+			$$->type = 2; //TYPE_STRING
+
+			$$->variableId = getOrAddId($4);
+		}
+		;
 
 
 %%

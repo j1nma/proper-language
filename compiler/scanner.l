@@ -29,30 +29,30 @@ Otherwise\ if  				return ELSEIF;
 Otherwise				return ELSE;
 Or\ else				return ELSE;
 
+While					return WHILE;
+Until					return UNTIL;
 then  					return DO;
-
 and\ that\ is\ it.		return END;
 and\ repeat.			return WHILE_END;
 
 \'						return DELIM;
 
 and						return AND;
+not						return NOT;
 or\ rather				return OR;
 
-not						return NOT;
-
-does\ not\ equals		return NEQ;
 equals					return EQ;
 is\ equal\ to			return EQ;
-
-is\ less\ than			return LT;
+does\ not\ equals		return NEQ;
 is\ less\ than\ or\ equals\ to	return LE;
-
-is\ greater\ than		return GT;
+is\ less\ than			return LT;
 is\ greater\ than\ or\ equals\ to 	return GE;
+is\ greater\ than		return GT;
 
-While					return WHILE;
-Until					return UNTIL;
+Please\ read			return READ;
+a\ number				return NUMBER;
+text					return TEXT;
+into					return INTO;
 
 [\(\)]				{return *yytext;}
 

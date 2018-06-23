@@ -257,6 +257,12 @@ void produceWhile(whileNode *wn)
     printf("\t}\n\n");
 }
 
+/* Produce read node */
+void produceRead(readNode *rn)
+{
+    printf("readVariable(%d, %d);\n", rn->type, rn->variableId);
+}
+
 /* Produce exit call */
 void produceExit()
 {
@@ -285,6 +291,10 @@ void getCode(statementNode *root)
 
         case WHILE_BLOCK:
             produceWhile((whileNode *)root->elem);
+            break;
+
+        case READ_INTO:
+            produceRead((readNode *)root->elem);
             break;
 
         case EXIT_CALL:

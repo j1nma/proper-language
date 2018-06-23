@@ -4,6 +4,10 @@
 #include <stdint.h>
 
 #define MAX_VARIABLES 1000
+#define FLOAT_ERROR 0.00001
+#define READ_STRING_SIZE 1024
+
+#define ABS(x) ((x) < 0 ? -(x) : (x))
 
 typedef enum
 {
@@ -32,9 +36,11 @@ variable createIntVariable(int value);
 variable createFloatVariable(float value);
 variable createStringVariable(char *value);
 
-variable assignVariable(int id, variable assigned);
+variable assignVariable(int id, variable v);
 
 void printVariable(variable v);
+
+void readVariable(variableType type, int elem);
 
 void freeVariable(variable *v);
 

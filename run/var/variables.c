@@ -114,6 +114,44 @@ void printVariable(variable v)
     printf("\n");
 }
 
+void readVariable(variableType type, int id)
+{
+    if (type == TYPE_INT || type == TYPE_FLOAT)
+    {
+        double num;
+
+        /* lg double [footnote] number with up to six digits of precision */
+        scanf("%lg", &num);
+
+        while (getchar() != '\n')
+            ;
+
+        if (ABS(num - (long)num) < FLOAT_ERROR)
+        {
+            assignVariable(id, createIntVariable((int)num));
+        }
+        else
+        {
+            assignVariable(id, createFloatVariable(num));
+        }
+    }
+    else if (type == TYPE_STRING)
+    {
+        char *str = malloc(READ_STRING_SIZE);
+
+        /* The buffer length is 1024, which includes room for the possible 
+        1023 characters plus the null terminator: */
+        scanf("%1023[^\n]", str);
+
+        while (getchar() != '\n')
+            ;
+
+        assignVariable(id, createStringVariable(str));
+
+        free(str);
+    }
+}
+
 void freeVariable(variable *v)
 {
     if (v == NULL)

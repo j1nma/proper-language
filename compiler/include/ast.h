@@ -10,6 +10,7 @@ typedef enum
     ASSIGNMENT,
     IF_THEN_ELSE,
     WHILE_BLOCK,
+    READ_INTO,
     EXIT_CALL
 } statementType;
 
@@ -112,6 +113,12 @@ typedef struct whileNode
     struct statementNode *block;
 } whileNode;
 
+typedef struct readNode
+{
+    int type; // variableType
+    int variableId;
+} readNode;
+
 /*
 	Helper node when reducing statement rules.
 */
@@ -134,6 +141,7 @@ void produceBinaryBoolean(boolNode *node, char *booleanOperator);
 void produceBoolean(boolNode *bn);
 void produceIf(ifElseIfNode *in);
 void produceWhile(whileNode *wn);
+void produceRead(readNode *rn);
 
 void produceExit();
 
