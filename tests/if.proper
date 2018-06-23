@@ -1,0 +1,18 @@
+Dear Sir or Madam,
+
+    Say x is 10.
+
+    Say error is "This should not appear".
+
+    If 'x is greater than 5' then
+        Please show "x is greater than 5".
+    Otherwise if 'x is less than 5'
+        Please show "x is less than 5".
+    Otherwise if 'x is equal to 5'
+        Please show "x is 5". 
+    Or else
+        Please show error.
+    and that is it.
+
+Sincerely,
+Mr. Proper

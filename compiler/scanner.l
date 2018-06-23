@@ -14,12 +14,42 @@ digit [0-9]
 %%
 
 [\t \n]	;
-"Dear Sir or Madam," {return MAIN_START;}
-"Sincerely,\nMr. Proper"		{return MAIN_END;}
-"Please show"    	{return PRINT;}
+Dear\ Sir\ or\ Madam,	return MAIN_START;
+Sincerely,\nMr.\ Proper return MAIN_END;
+Please\ show   			return PRINT;
 
-"Say"    	{return SAY;}
-"is"    	{return IS;}
+Say    					return SAY;
+is    					return IS;
+
+If						return IF;
+Suppose\ that			return IF;
+
+Otherwise\ if  				return ELSEIF;
+
+Otherwise				return ELSE;
+Or\ else				return ELSE;
+
+then  					return DO;
+
+and\ that\ is\ it.		return END;
+and\ repeat.			return WHILE_END;
+
+\'						return DELIM;
+
+and						return AND;
+or\ rather				return OR;
+
+not						return NOT;
+
+does\ not\ equals		return NEQ;
+equals					return EQ;
+is\ equal\ to			return EQ;
+
+is\ less\ than			return LT;
+is\ less\ than\ or\ equals\ to	return LE;
+
+is\ greater\ than		return GT;
+is\ greater\ than\ or\ equals\ to 	return GE;
 
 [\(\)]				{return *yytext;}
 

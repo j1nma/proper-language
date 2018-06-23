@@ -73,13 +73,13 @@ int getOrAddId(char * strId) {
 
 %token PRINT;
 
+%token SAY;
+%token IS;
+
 /* READ a NUMBER or TEXT */
 %token READ;
 %token NUMBER;
 %token TEXT;
-
-%token SAY;
-%token IS;
 
 %token DELIM;
 
