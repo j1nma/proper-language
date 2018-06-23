@@ -15,7 +15,7 @@ Group ALT
 ./properize.sh your_proper_program.proper
 ```
 
-Or if prefered, without re-compiling proper_compiler already at *compiler* directory, generate compiled and executable:
+Or if prefered, with proper_compiler already compiled at *compiler* directory, generate proper compiled and executable:
 
 ```
 ./proper_compiled_and_bin.sh your_proper_program.proper
