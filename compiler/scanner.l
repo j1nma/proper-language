@@ -18,6 +18,9 @@ digit [0-9]
 "Sincerely,\nMr. Proper"		{return MAIN_END;}
 "Please show"    	{return PRINT;}
 
+"Say"    	{return SAY;}
+"is"    	{return IS;}
+
 [\(\)]				{return *yytext;}
 
 {digit}+   			{

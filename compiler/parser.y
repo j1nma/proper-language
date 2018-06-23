@@ -30,7 +30,7 @@ int getOrAddId(char * strId) {
 
 	identifiers[i] = malloc(strlen(strId) + 1);
 	strcpy(identifiers[i], strId);
-	printf("addVariableNameToId(%d, \"%s\");\n", i, strId);
+	printf("\taddVariableNameToId(%d, \"%s\");\n", i, strId);
 
 	return i;
 
@@ -72,6 +72,8 @@ int getOrAddId(char * strId) {
 %token END_LINE;
 
 %token PRINT;
+
+/* READ a NUMBER or TEXT */
 %token READ;
 %token NUMBER;
 %token TEXT;
@@ -126,13 +128,15 @@ int getOrAddId(char * strId) {
 %type <statementnode> program;
 %type <block> block;
 
-%start entry
+%start entry 
 
 %%
 
-entry: program {
+entry: mainstart entry mainend {}
+		| program {
 			getCode($1);
-	  	}
+		} 
+		;
 
 program: block {
 		   	$$ = malloc(sizeof(*$$));
@@ -150,7 +154,8 @@ program: block {
 		}
 		;
 
-block: print {
+block: 
+		print {
 			$$ = malloc(sizeof(*$$));
 			$$->type = PRINT_CALL;
 			$$->node = $1;
@@ -174,21 +179,20 @@ block: print {
 			$$ = malloc(sizeof(*$$));
 			$$->type = EXIT_CALL;
 		}
-		| mainstart {
-			$$ = malloc(sizeof(*$$));
-			$$->type = START_POINT;
-		}
-		| mainend {
-			$$ = malloc(sizeof(*$$));
-			$$->type = END_POINT;
+		;
+
+mainstart: MAIN_START {
+			printf("int main(void) { \n");
+			}
+			;
+
+mainend: MAIN_END {
+			printf("} \n");
 		}
 		;
 
-mainstart: MAIN_START;
-mainend: MAIN_END;
-
 exit: EXIT;
-assign: SAY IDENTIFIER IS expression {
+assign: SAY IDENTIFIER IS expression END_LINE {
 	 		$$ = malloc(sizeof(*$$));
 	 		$$->variableId = getOrAddId($2);
 	 		$$->expression = $4;

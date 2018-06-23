@@ -291,14 +291,6 @@ void getCode(statementNode *root)
             produceExit();
             break;
 
-        case START_POINT:
-            printf("int main(void) { \n");
-            break;
-
-        case END_POINT:
-            printf("}\n");
-            break;
-
         default:
             break;
         }

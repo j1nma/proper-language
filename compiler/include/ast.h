@@ -10,9 +10,7 @@ typedef enum
     ASSIGNMENT,
     IF_THEN_ELSE,
     WHILE_BLOCK,
-    EXIT_CALL,
-    START_POINT,
-    END_POINT
+    EXIT_CALL
 } statementType;
 
 typedef enum
@@ -115,7 +113,7 @@ typedef struct whileNode
 } whileNode;
 
 /*
-	Helper node when reducing statement rules
+	Helper node when reducing statement rules.
 */
 typedef struct blockNode
 {
