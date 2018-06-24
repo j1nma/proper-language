@@ -38,6 +38,13 @@ Clean files with:
 make clean
 ```
 
+Debug files with:
+
+
+```
+make debug
+```
+
 ## Compiling your program
 
 
