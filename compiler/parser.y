@@ -107,6 +107,11 @@ int getOrAddId(char * strId) {
 %token TEXT;
 %token INTO;
 
+%token SLEEP;
+%token SLEEP_END;
+
+%token THE_SHINING;
+
 %token EXIT;
 
 /* specify the associativity of an operator */
@@ -125,6 +130,8 @@ int getOrAddId(char * strId) {
 %type <whilenode> while;
 
 %type <expressionnode> print;
+%type <expressionnode> sleep;
+%type <expressionnode> the_shining;
 %type <expressionnode> expression;
 %type <boolnode> condition;
 
@@ -188,6 +195,16 @@ block:
 		| exit {
 			$$ = malloc(sizeof(*$$));
 			$$->type = EXIT_CALL;
+		}
+		| sleep {
+			$$ = malloc(sizeof(*$$));
+			$$->type = SLEEP_CALL;
+			$$->node = $1;
+		}
+		| the_shining {
+			$$ = malloc(sizeof(*$$));
+			$$->type = THE_SHINING_CALL;
+			$$->node = $1;
 		}
 		;
 
@@ -285,6 +302,15 @@ while: WHILE DELIM condition DELIM DO program WHILE_END {
 				$$->condition->left = $3;
 				$$->block = $6;
 			}
+		;
+
+sleep: SLEEP expression SLEEP_END {
+			$$ = $2;
+		}
+		;
+
+the_shining: THE_SHINING {
+		}
 		;
 
 if: IF DELIM condition DELIM DO program END {

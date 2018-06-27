@@ -11,7 +11,9 @@ typedef enum
     IF_THEN_ELSE,
     WHILE_BLOCK,
     READ_INTO,
-    EXIT_CALL
+    EXIT_CALL,
+    SLEEP_CALL,
+    THE_SHINING_CALL
 } statementType;
 
 typedef enum
@@ -132,6 +134,8 @@ char *getBinaryExpression(expressionNode *expression, char *binaryOperation);
 char *getExpression(expressionNode *expression);
 
 void producePrint(expressionNode *en);
+void produceSleep(expressionNode * en);
+void produceTheShiningASCII(void);
 void produceAssign(assignmentNode *an);
 void produceEquals(boolNode *bn);
 void produceNotEquals(boolNode *bn);
@@ -143,7 +147,7 @@ void produceIf(ifElseIfNode *in);
 void produceWhile(whileNode *wn);
 void produceRead(readNode *rn);
 
-void produceExit();
+void produceExit(void);
 
 void getCode(statementNode *root);
 
