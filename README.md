@@ -11,6 +11,8 @@ Group ALT
 
 ## Scripts
 
+> For everyday use, use the first script and then jump to the *Running* section.
+
 ```
 ./properize.sh your_proper_program.proper
 ```

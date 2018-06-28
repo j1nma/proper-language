@@ -1,6 +1,6 @@
 Dear Sir or Madam,
 
-    Say fact is 6. Say res is fact. While 'fact is greater than 1' then say res is res * (fact - 1). Say fact is (fact - 1). And repeat.
+    Say fact is 6. Say res is fact. While 'fact is greater than 1' then say res is res * (fact - 1). Say fact is (fact - 1). And repeat the previous.
     Please show res.
 
 Sincerely,

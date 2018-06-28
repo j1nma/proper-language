@@ -108,10 +108,10 @@ void printVariable(variable v)
         printf("%f", v.value.floatValue);
         break;
     case TYPE_STRING:
-        printf("%s", v.value.stringValue);
+        printf("%s\0", v.value.stringValue);
         break;
     }
-
+    
 }
 
 void sleepVariable(variable v)

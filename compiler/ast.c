@@ -264,15 +264,6 @@ void produceSleep(expressionNode * en)
     e = getExpression(en);
     printf("\tsleepVariable(%s);\n", e);
     free(e);
-
- // {digit}+" seconds"    {
- //                       int len = strlen(yytext);
- //                       char * str = malloc(len-7);
- //                       strncpy(str, yytext, len-8);
- //                       str[len-8] = '\0';
- //                       yylval.intval = atoi(str);
- //                       return INT;
- //                   }
 }
 
 void produceTheShiningASCII(void) {
