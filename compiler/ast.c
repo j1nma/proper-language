@@ -257,6 +257,28 @@ void produceWhile(whileNode *wn)
     printf("\t}\n\n");
 }
 
+void produceSleep(expressionNode * en)
+{
+    char * e;
+
+    e = getExpression(en);
+    printf("\tsleepVariable(%s);\n", e);
+    free(e);
+
+ // {digit}+" seconds"    {
+ //                       int len = strlen(yytext);
+ //                       char * str = malloc(len-7);
+ //                       strncpy(str, yytext, len-8);
+ //                       str[len-8] = '\0';
+ //                       yylval.intval = atoi(str);
+ //                       return INT;
+ //                   }
+}
+
+void produceTheShiningASCII(void) {
+    printf("\ttheShiningASCII();\n");
+}
+
 /* Produce read node */
 void produceRead(readNode *rn)
 {
@@ -300,6 +322,13 @@ void getCode(statementNode *root)
         case EXIT_CALL:
             produceExit();
             break;
+
+        case SLEEP_CALL:
+            produceSleep((expressionNode *)root->elem);
+            break;
+
+        case THE_SHINING_CALL:
+            produceTheShiningASCII();
 
         default:
             break;

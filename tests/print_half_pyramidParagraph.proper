@@ -1,0 +1,6 @@
+Dear Sir or Madam,
+
+	Please show "Enter number of rows: ". Please read a number into rows. Say i is 1. Say j is 1. While 'i is less than or equals to rows' then while 'j is less than or equals to i' then please show "*". Say j is (j+1). And repeat the previous. Say j is 1. Say i is (i+1). Please show "\n". And repeat the previous.
+
+Sincerely,
+Mr. Proper

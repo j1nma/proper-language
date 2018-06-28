@@ -40,6 +40,10 @@ variable assignVariable(int id, variable v);
 
 void printVariable(variable v);
 
+void sleepVariable(variable v);
+
+void theShiningASCII(void);
+
 void readVariable(variableType type, int elem);
 
 void freeVariable(variable *v);

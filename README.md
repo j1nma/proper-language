@@ -38,6 +38,13 @@ Clean files with:
 make clean
 ```
 
+Debug files with:
+
+
+```
+make debug
+```
+
 ## Compiling your program
 
 
@@ -56,4 +63,3 @@ gcc compiled.c runtime/*.c -o proper.out
 ```
 ./proper.out
 ```
-
