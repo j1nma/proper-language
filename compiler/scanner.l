@@ -22,7 +22,7 @@ please\ show   					return PRINT;
 Say|say    						return SAY;
 is    							return IS;
 
-If								return IF;
+If|if								return IF;
 Suppose\ that					return IF;
 
 Otherwise\ if  					return ELSEIF;
@@ -36,6 +36,7 @@ Until							return UNTIL;
 until							return UNTIL;
 then  							return DO;
 and\ that\ is\ it.				return END;
+And\ that\ is\ it.				return END;
 and\ repeat.					return WHILE_END;
 and\ repeat\ the\ previous.		return WHILE_END;
 And\ repeat\ the\ previous.		return WHILE_END;
