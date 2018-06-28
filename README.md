@@ -64,3 +64,8 @@ gcc compiled.c runtime/*.c -o proper.out
 ./proper.out
 ```
 
+
+
+
+
+
